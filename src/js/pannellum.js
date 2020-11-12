@@ -1605,6 +1605,32 @@ function createHotSpot(hs) {
     else
         div.className += ' pnlm-hotspot pnlm-sprite pnlm-' + escapeHTML(hs.type);
 
+    if (hs.data) { // data should containt an array of arrays, the child arrays containing [key,value] pairs
+        if (Array.isArray(hs.data)) {
+            hs.data.forEach(d => {
+                if (Array.isArray(d))
+                    div.dataset[d[0]] = d[1];
+                else
+                    throw new Error('data array does not contain child array(s) of [key,value] pairs');
+            })
+        } else {
+            throw new Error('data must be an array');
+        }
+    }
+
+    if (hs.css) { // css should containt an array of arrays, the child arrays containing [property,value] pairs
+        if (Array.isArray(hs.css)) {
+            hs.css.forEach(c => {
+                if (Array.isArray(c))
+                    div.style[c[0]] = c[1];
+                else
+                    throw new Error('css array does not contain child array(s) of [property,value] pairs');
+            })
+        } else {
+            throw new Error('css must be an array');
+        }
+    }
+
     var span = document.createElement('span');
     if (hs.text)
         span.innerHTML = escapeHTML(hs.text);
