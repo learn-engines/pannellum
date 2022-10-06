@@ -11,11 +11,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mpetroff/pannellum.git"
+    "url": "https://github.com/learn-engines/pannellum.git"
   },
   "license": "MIT",
   "homepage": "https://pannellum.org/",
-  "main": "build/pannellum.js",
+  "main": "index.js",
   "keywords": [
     "panorama",
     "viewer"
